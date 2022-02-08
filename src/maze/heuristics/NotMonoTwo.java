@@ -34,6 +34,7 @@ public class NotMonoTwo implements ToIntFunction<MazeExplorer> {
         for (Integer i:holdY) {
             if (i > bigY) {
                 bigY = i;
+                // Comment
             }
         }
         if (bigX < bigY) {
