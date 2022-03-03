@@ -4,10 +4,9 @@ import core.Pos;
 import maze.core.MazeExplorer;
 
 import java.util.ArrayList;
-import java.util.PriorityQueue;
 import java.util.function.ToIntFunction;
 
-public class MonotonicOne implements ToIntFunction<MazeExplorer> {
+public class ActuallyNonMono implements ToIntFunction<MazeExplorer> {
     @Override
     public int applyAsInt(MazeExplorer value) {
         int toTreasure;

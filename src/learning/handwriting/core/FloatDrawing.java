@@ -1,5 +1,7 @@
 package learning.handwriting.core;
 
+import java.util.PriorityQueue;
+
 public class FloatDrawing {
     private double[][] pixels;
 
@@ -33,8 +35,13 @@ public class FloatDrawing {
     //  is calculated as follows:
     //  d1weight * d1 pixel value + (1.0 - d1weight) * d2 pixel value
     public static FloatDrawing weightedAverageOf(FloatDrawing d1, FloatDrawing d2, double d1weight) {
-        // Your code here
-        return null;
+        FloatDrawing hold = new FloatDrawing(d1.getWidth(), d1.getHeight());
+        for(int i = 0; i < hold.getWidth(); i++){
+            for(int j = 0; j < hold.getHeight(); j++){
+                hold.set(i, j, d1weight * d1.get(i,j) + (1.0 - d1weight) * d2.get(i, j));
+            }
+        }
+        return hold;
     }
 
     public int getWidth() {
@@ -48,7 +55,14 @@ public class FloatDrawing {
     // TODO: Calculate the pixel-by-pixel Euclidean distance between these two
     //  FloatDrawing objects.
     public double euclideanDistance(FloatDrawing other) {
-        return 0.0;
+        double dist = 0;
+        for (int i = 0; i < getWidth(); i++){
+            for (int j = 0; j < getHeight(); j ++){
+                //System.out.println(i + " " +j + " "+ getHeight() + " " + getWidth() + " " + other.getHeight() + " " + other.getWidth());
+                dist += Math.pow(pixels[i][j] - other.pixels[i][j], 2);
+            }
+        }
+        return dist;
     }
 
     @Override

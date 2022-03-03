@@ -6,7 +6,7 @@ import maze.core.MazeExplorer;
 import java.util.ArrayList;
 import java.util.function.ToIntFunction;
 
-public class NotMonoTwo implements ToIntFunction<MazeExplorer> {
+public class ActuallyMono implements ToIntFunction<MazeExplorer> {
     @Override
     public int applyAsInt(MazeExplorer value) {
         ArrayList<Integer> holdX = new ArrayList<>();
