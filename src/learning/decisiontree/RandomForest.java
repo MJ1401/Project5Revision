@@ -39,7 +39,11 @@ public class RandomForest<V,L, F, FV extends Comparable<FV>> implements Classifi
 	public L classify(V v) {
 		// TODO: Ask each tree root for its classifiation of the Drawing.
 		//  Pick the plurality winner as the winner. I recomend using a Histogram.
-		return null;
+		Histogram<L> classification = new Histogram<>();
+		for (DecisionTree<V,L,F,FV> t : treeRoots) {
+			classification.bump(t.classify(v));
+		}
+		return classification.getPluralityWinner();
 	}
 
 	public <D extends Updateable<Duple<F,FV>>> void visualize(L label, D drawable) {

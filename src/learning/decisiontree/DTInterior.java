@@ -6,6 +6,7 @@ import learning.core.Updateable;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.function.BiFunction;
+import java.util.function.DoubleToIntFunction;
 import java.util.function.Function;
 
 public class DTInterior<V, L, F, FV extends Comparable<FV>> implements DecisionTree<V,L,F,FV> {
@@ -30,7 +31,10 @@ public class DTInterior<V, L, F, FV extends Comparable<FV>> implements DecisionT
 		// TODO: If the targeted decisionFeature is less than or equal to the maxFeatureValue,, ask the left subtree.
 		//       Otherwise, ask the right subtree.
 		//       DTTest.testInterior() should pass when this works.
-		return null;
+		if (getFeatureValue.apply(v, decisionFeature).compareTo(maxFeatureValue) <= 0) {
+			return left.classify(v);
+		}
+		return right.classify(v);
 	}
 
 	@Override
